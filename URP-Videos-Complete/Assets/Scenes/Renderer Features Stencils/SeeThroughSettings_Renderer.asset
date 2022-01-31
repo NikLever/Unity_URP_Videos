@@ -22,7 +22,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 128
       PassNames: []
-    overrideMaterial: {fileID: 0}
+    overrideMaterial: {fileID: 2100000, guid: 60e190de223b7463e959ebc5423702a6, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
@@ -61,7 +61,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 256
       PassNames: []
-    overrideMaterial: {fileID: 0}
+    overrideMaterial: {fileID: 2100000, guid: 27c85de8e0fc441128554bdf61906002, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_AssetVersion: 1
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 375
+    m_Bits: 119
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

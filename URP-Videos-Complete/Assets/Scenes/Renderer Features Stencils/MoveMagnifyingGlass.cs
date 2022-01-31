@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveMagnifyingGlass : MonoBehaviour
 {
-    float prevX;
-    bool mouseDown = false;
-
+    //float prevX;
+    //bool mouseDown = false;
+    Vector3 mousePos = new Vector3();
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class MoveMagnifyingGlass : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Input.GetMouseButtonDown(0)) mouseDown = true;
         if (Input.GetMouseButtonUp(0))
@@ -38,5 +39,15 @@ public class MoveMagnifyingGlass : MonoBehaviour
 
             prevX = mousePos.x;
         }
+    }*/
+
+    private void OnMouseDrag()
+    {
+        mousePos.x = Input.mousePosition.x;
+        mousePos.y = Input.mousePosition.y;
+        mousePos.z = (Camera.main.transform.position - gameObject.transform.position).magnitude;
+
+        Vector3 point = Camera.main.ScreenToWorldPoint(mousePos);
+        gameObject.transform.position = point;
     }
 }

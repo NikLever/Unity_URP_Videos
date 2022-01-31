@@ -2,59 +2,48 @@
 {
     Properties
     {
-        _BaseMap("Base Map", 2D) = "white" {}
+        _MainTex("Main Texture", 2D) = "white" {}
         _Color("Color", Color) = (1,1,1,1)
     }
 
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" }
+        Tags { "RenderType" = "Opaque" }
 
         Pass
         {
-            HLSLPROGRAM
+            CGPROGRAM
 
             #pragma vertex vert
             #pragma fragment frag
 
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "UnityCG.cginc"
 
-            struct Attributes
+            struct v2f
             {
-                float4 positionOS   : POSITION;
+                float4 position : SV_POSITION;
                 float2 uv: TEXCOORD0;
             };
 
-            struct Varyings
-            {
-                float4 positionCS  : SV_POSITION;
-                float2 uv: TEXCOORD0;
-            };
-
-            TEXTURE2D(_BaseMap);
-            SAMPLER(sampler_BaseMap);
-
-            CBUFFER_START(UnityPerMaterial)
             float4 _Color;
-            float4 _BaseMap_ST;
-            CBUFFER_END
+            sampler2D _MainTex;
 
-            Varyings vert(Attributes IN)
+            v2f vert(appdata_base v)
             {
-                Varyings OUT;
+                v2f o;
 
-                OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
-                OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
+                o.position = UnityObjectToClipPos(v.vertex);
+                o.uv = v.texcoord;
 
-                return OUT;
+                return o;
             }
 
-            half4 frag(Varyings IN) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
-                float4 texel = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
+                fixed4 texel = tex2D(_MainTex, i.uv);
                 return texel * _Color;
             }
-            ENDHLSL
+            ENDCG
         }
     }
 }
