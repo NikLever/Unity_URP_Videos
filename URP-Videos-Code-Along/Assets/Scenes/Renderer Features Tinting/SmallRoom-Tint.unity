@@ -751,7 +751,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.10297258, g: 0.15831551, b: 0.24528301, a: 0}
+  m_BackGroundColor: {r: 0.23754005, g: 0.26902667, b: 0.3207547, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293d8c4220fe14d26821c20dad208925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipelineAsset: {fileID: 11400000, guid: 1bd47045aaeb0434faa49074d7faa0d4, type: 2}
+  pipelineAsset: {fileID: 11400000, guid: 8614f7d5e63f040b2a86ccfc5d915daa, type: 2}
 --- !u!1001 &685100953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -981,7 +981,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 11813
+  m_ColorTemperature: 9777
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0

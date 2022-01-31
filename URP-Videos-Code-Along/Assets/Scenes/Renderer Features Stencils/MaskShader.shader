@@ -10,6 +10,7 @@ Shader "Custom/StencilMask"
 
 		Pass {
 			ZWrite Off
+            ColorMask 0
 
 			HLSLPROGRAM
 

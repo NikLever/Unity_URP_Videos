@@ -15,7 +15,6 @@ MonoBehaviour:
   m_Active: 0
   settings:
     material: {fileID: 0}
-    renderEvent: 300
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +93,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 192
+        m_Bits: 128
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -148,7 +147,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 192
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: b3f891aded7cb48659aa44dfe4801e39, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: 51882f4ce61d442bfa4efbc3c01c9dc6, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 1
     depthCompareFunction: 5
