@@ -7,34 +7,34 @@ public class TintFeature : ScriptableRendererFeature
     class CustomRenderPass : ScriptableRenderPass
     {
         private Material material;
-        //private RenderTargetIdentifier source;
-        //private RenderTargetHandle tempTexture;
+        private RenderTargetIdentifier source;
+        private RenderTargetHandle tempTexture;
 
         public CustomRenderPass(Material material) : base()
         {
             this.material = material;
-            //tempTexture.Init("_TempTintTexture");
+            tempTexture.Init("_TempTintTexture");
         }
 
-        /*public void SetSource(RenderTargetIdentifier source)
+        public void SetSource(RenderTargetIdentifier source)
         {
-            //this.source = source;
-        }*/
+            this.source = source;
+        }
 
         public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
         {
-            //RenderTextureDescriptor cameraTextureDesc = renderingData.cameraData.cameraTargetDescriptor;
-            //cameraTextureDesc.depthBufferBits = 0;
-            //cmd.GetTemporaryRT(tempTexture.id, cameraTextureDesc, FilterMode.Bilinear);
+            RenderTextureDescriptor cameraTextureDesc = renderingData.cameraData.cameraTargetDescriptor;
+            cameraTextureDesc.depthBufferBits = 0;
+            cmd.GetTemporaryRT(tempTexture.id, cameraTextureDesc, FilterMode.Bilinear);
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             CommandBuffer cmd = CommandBufferPool.Get("TintFeature");
 
-            //Blit(cmd, source, tempTexture.Identifier(), material, 0);
-            //Blit(cmd, tempTexture.Identifier(), source);
-            Blit(cmd, ref renderingData, material, 0);
+            Blit(cmd, source, tempTexture.Identifier(), material, 0);
+            Blit(cmd, tempTexture.Identifier(), source);
+            //Blit(cmd, ref renderingData, material, 0);
             
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
@@ -43,7 +43,7 @@ public class TintFeature : ScriptableRendererFeature
         // Cleanup any allocated resources that were created during the execution of this render pass.
         public override void OnCameraCleanup(CommandBuffer cmd)
         {
-            //cmd.ReleaseTemporaryRT(tempTexture.id);
+            cmd.ReleaseTemporaryRT(tempTexture.id);
         }
     }
 
@@ -71,7 +71,7 @@ public class TintFeature : ScriptableRendererFeature
     // This method is called when setting up the renderer once per-camera.
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        //m_ScriptablePass.SetSource(renderer.cameraColorTarget);
+        m_ScriptablePass.SetSource(renderer.cameraColorTarget);
         renderer.EnqueuePass(m_ScriptablePass);
     }
 }
