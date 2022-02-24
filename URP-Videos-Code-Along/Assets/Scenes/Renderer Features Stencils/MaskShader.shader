@@ -1,4 +1,4 @@
-Shader "Custom/StencilMask"
+Shader "Custom/MaskShader"
 {
 	Properties{}
 
@@ -9,8 +9,6 @@ Shader "Custom/StencilMask"
 		}
 
 		Pass {
-			ZWrite Off
-            ColorMask 0
 
 			HLSLPROGRAM
 
